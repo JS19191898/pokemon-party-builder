@@ -1,6 +1,4 @@
-# project-name-pending
-
-## Pokémon Party Generator
+# Pokémon Party Creator
 
 ## User Story
 As an aspiring pokemon trainer, I want to build a 6-pokemon party to begin my quest to be the very best there ever was!
