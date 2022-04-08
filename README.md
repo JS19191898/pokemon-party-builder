@@ -10,3 +10,5 @@ WHEN I am searching for a pokemon to add,
 THEN I can choose to search by name, or search for filtered options.
 WHEN I confirm a pokemon selection,
 THEN said pokemon will appear in the party slot on the first page.
+WHEN I am building my party roster,
+THEN the pokemon choices will fill from left to right, top to bottom.
