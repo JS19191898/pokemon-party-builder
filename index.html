@@ -37,7 +37,7 @@
                 <!-- <h2>Search for your Pokémon!</h2> -->
                 <!-- Form Control on Bulma -->
                 <div class="field navbar-item column is-4">
-                    <label class="label ">Search for your Pokémon!</label>
+                    <label class="label" id="searchbar">Search for your Pokémon!</label>
                     <div class="control ">
                         <input class="input" type="Pokemon" placeholder="Text input">
                     </div>
@@ -50,8 +50,8 @@
                         <select>
                             <!--I think we should have an option for multiple selection when it comes to these-->
                             <option>Select Generation</option>
-                            <!--Need to create theese dynamically
-                            <option>Any</option>
+                            Need to create theese dynamically
+                            <option>~Any~</option>
                             <option>One</option>
                             <option>Two</option>
                             <option>Three</option>
@@ -60,7 +60,7 @@
                             <option>Six</option>
                             <option>Seven</option>
                             <option>Eight</option>
-                            -->
+                           
                         </select>
                     </div> 
                 </div>
@@ -70,14 +70,21 @@
                     <div class="select">
                         <select>
                             <option>Select Type</option>
-                            <!-- To be created dynamically
-                            <option>type</option>
-                            <option>type</option>
-                            <option>type</option>
-                            <option>type</option>
-                            <option>type</option>
-                            <option>type</option>
-                            <option>type</option> -->
+                            <!-- To be created dynamically?-->
+                            <option>Fire</option> 
+                            <option>Water</option> 
+                            <option>Grass</option> 
+                            <option>Electric</option>
+                            <option>Poison</option>
+                            <option>Ground</option> 
+                            <option>Flying</option>
+                            <option>Psychic</option> 
+                            <option>Bug</option> 
+                            <option>Ghost</option> 
+                            <option>Dark</option> 
+                            <option>Dragon</option> 
+                            <option>Steel</option> 
+                            <option>Fairy</option> 
                         </select>
                     </div>
                 </div>
@@ -103,10 +110,12 @@
 
 
       </nav>
-
+      <section class="pika">
+        </section>
 
         <div></div>
     
     <script src="assets/script.js" async defer></script>
   </body>
 </html>
+

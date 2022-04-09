@@ -42,3 +42,21 @@ body {
     margin-top: 20px;
   }
   
+  .pika {
+    background-image: url("https://c.tenor.com/W4NJYyrjU24AAAAC/pikachu-meme.gif");
+    background-size: 50vh;
+  }
+/* adding media query webpage responsive */
+  @media screen and (max-width: 768px) {
+    #pokemon-menu {
+        margin: 0 15px;
+    }
+        
+    .custom-adjust {
+        margin-top: 0px;
+    }
+  
+    .field{
+        padding-bottom: 0px;
+    }
+  }
