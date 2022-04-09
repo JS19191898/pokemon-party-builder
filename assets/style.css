@@ -1,0 +1,26 @@
+body {
+    font-family: "Righteous", cursive;
+  }
+  
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .dashboard {
+    background-image: linear-gradient(
+      to right top,
+      #ff0000,
+      #ff0000,
+      #0000ff,
+      #ffb800,
+      #ffde00
+    );
+  }
+  
+  .hero-image
+  
+  .hide {
+    display:none;
+  }
