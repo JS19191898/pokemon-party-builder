@@ -42,3 +42,16 @@ body {
     margin-top: 20px;
   }
   
+@media screen and (max-width: 768px) {
+    #pokemon-menu {
+        margin: 0 15px;
+    }
+        
+    .custom-adjust {
+        margin-top: 0px;
+    }
+
+    .field{
+        padding-bottom: 0px;
+    }
+}
