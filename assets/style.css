@@ -47,18 +47,6 @@ h1 {
   background-size: 50vh;
 }
 
-.card {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-}
-
-.card-image {
-  height: 250px;
-  width: 250px;
-}
-
-/* adding media query webpage responsive */
 @media screen and (max-width: 768px) {
   #pokemon-menu {
     margin: 0 15px;
@@ -71,4 +59,22 @@ h1 {
   .field {
     padding-bottom: 0px;
   }
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.card-image {
+  height: 250px;
+  width: 250px;
+}
+
+.container {
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px;
+  column-gap: 10px;
+  row-gap: 15px;
 }
