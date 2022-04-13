@@ -1,62 +1,74 @@
 body {
-    font-family: "Righteous", cursive;
-  }
-  
-  h1 {
-    color: white;
-    text-align: center;
-    font-size: 30px;
-  }
-  
-  .dashboard {
-    background-image: linear-gradient(
-      to right top,
-      #ff0000,
-      #ff0000,
-      #0000ff,
-      #ffb800,
-      #ffde00
-    );
-  }
-  
-  .hero-image {
-    background-image: url("https://camo.githubusercontent.com/90f24316b24433bf0a2778d95ca93ad264093645a71d2eb9f569cdbc34fbfc6d/68747470733a2f2f6372797374616c2d63646e322e6372797374616c636f6d6d657263652e636f6d2f70686f746f732f363333303536352f73706c61736842616e6e65725f706f6b656d6f6e2e6a7067");
-  
-    /* Setting height */
-    height: 30vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  
-  .hide {
-    display: none;
-  }
-  
-  #pokemon-menu {
-    margin-left: 20px;
-  }
-  
-  .custom-adjust {
-    margin-top: 20px;
-  }
-  
-  .pika {
-    background-image: url("https://c.tenor.com/W4NJYyrjU24AAAAC/pikachu-meme.gif");
-    background-size: 50vh;
-  }
+  font-family: "Righteous", cursive;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+.dashboard {
+  background-image: linear-gradient(
+    to right top,
+    #ff0000,
+    #ff0000,
+    #0000ff,
+    #ffb800,
+    #ffde00
+  );
+}
+
+.hero-image {
+  background-image: url("https://camo.githubusercontent.com/90f24316b24433bf0a2778d95ca93ad264093645a71d2eb9f569cdbc34fbfc6d/68747470733a2f2f6372797374616c2d63646e322e6372797374616c636f6d6d657263652e636f6d2f70686f746f732f363333303536352f73706c61736842616e6e65725f706f6b656d6f6e2e6a7067");
+
+  /* Setting height */
+  height: 30vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hide {
+  display: none;
+}
+
+#pokemon-menu {
+  margin-left: 20px;
+}
+
+.custom-adjust {
+  margin-top: 20px;
+}
+
+.pika {
+  background-image: url("https://c.tenor.com/W4NJYyrjU24AAAAC/pikachu-meme.gif");
+  background-size: 50vh;
+}
+
+.card {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+.card-image {
+  height: 250px;
+  width: 250px;
+}
+
 /* adding media query webpage responsive */
-  @media screen and (max-width: 768px) {
-    #pokemon-menu {
-        margin: 0 15px;
-    }
-        
-    .custom-adjust {
-        margin-top: 0px;
-    }
-  
-    .field{
-        padding-bottom: 0px;
-    }
+@media screen and (max-width: 768px) {
+  #pokemon-menu {
+    margin: 0 15px;
   }
+
+  .custom-adjust {
+    margin-top: 0px;
+  }
+
+  .field {
+    padding-bottom: 0px;
+  }
+}
