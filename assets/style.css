@@ -23,7 +23,7 @@ h1 {
   background-image: url("https://camo.githubusercontent.com/90f24316b24433bf0a2778d95ca93ad264093645a71d2eb9f569cdbc34fbfc6d/68747470733a2f2f6372797374616c2d63646e322e6372797374616c636f6d6d657263652e636f6d2f70686f746f732f363333303536352f73706c61736842616e6e65725f706f6b656d6f6e2e6a7067");
 
   /* Setting height */
-  height: 30vh;
+  height: 35vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,8 +48,9 @@ h1 {
 }
 
 .type {
-  margin: 10px 0px;
-  padding: 5px 8px 5px 8px;
+  width: 67px;
+  margin: 2px;
+  padding: 5px 8px;
   display: inline-block;
   border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -147,6 +148,11 @@ h1 {
   border: 1px solid #4924a1;
 }
 
+.fairy {
+  background-color: #f041b6;
+  border: 1px solid #9e3074;
+}
+
 @media screen and (max-width: 768px) {
   #pokemon-menu {
     margin: 0 15px;
@@ -162,19 +168,23 @@ h1 {
 }
 
 .card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
 }
 
 .card-image {
-  height: 250px;
-  width: 250px;
+  /* height: 250px; */
+  /* width: 250px; */
 }
 
 .container {
-  grid-template-columns: 100px 50px 100px;
-  grid-template-rows: 80px auto 80px;
-  column-gap: 10px;
-  row-gap: 15px;
+  /* grid-template-columns: 100px 50px 100px; */
+  /* grid-template-rows: 80px auto 80px; */
+  /* column-gap: 10px; */
+  /* row-gap: 15px; */
+}
+
+.media {
+  margin: 2px;
 }

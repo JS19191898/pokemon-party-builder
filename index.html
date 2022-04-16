@@ -8,48 +8,66 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--Google Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-  <!-- Stylesheet for Bulma --> 
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-/>
-  <!--Resets the default-->
-    <link rel="stylesheet" href="./assets/reset.css"/>
-    
-  <!--Local style sheet-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet for Bulma -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <!--Resets the default-->
+    <link rel="stylesheet" href="./assets/reset.css" />
+
+    <!--Local style sheet-->
     <link rel="stylesheet" href="assets/style.css" />
-    
   </head>
- 
+
   <body>
-      <header class= "dashboard">
-         <h1> Pokémon Party Builder! </h1>
-          <div class= "hero-image"></div>
-      </header>
-      
-      <nav class= "navbar">
-        <div class= "navbar-menu is-active">
-          
-            <div  id="pokemon-menu">
-                <!-- <h2>Search for your Pokémon!</h2> -->
-                <!-- Form Control on Bulma -->
-                <form class="navbar-start columns is-vcentered" id="search-form"> 
-               
+    <header class="dashboard">
+      <h1>Pokémon Party Builder!</h1>
+      <div class="hero-image"></div>
+    </header>
 
-                <div class="field navbar-item column is-4">
-                    <label class="label" id="searchbar">Search for your Pokémon!</label>
-                    <div class="control ">
-                        <input id="pokemon" class="input" type="text" placeholder="Search by name">
-                    </div>
-                </div>
-    
-                <!-- Selecting Dropdown -->
+    <nav class="navbar">
+      <div class="navbar-menu is-active">
+        <div id="pokemon-menu">
+          <!-- <h2>Search for your Pokémon!</h2> -->
+          <!-- Form Control on Bulma -->
+          <form class="navbar-start columns is-vcentered" id="search-form">
+            <div class="field navbar-item column is-4">
+              <label class="label" id="searchbar"
+                >Search for your Pokémon!</label
+              >
+              <div class="control">
+                <input
+                  id="pokemon"
+                  class="input"
+                  type="text"
+                  placeholder="Search by name"
+                />
+              </div>
+            </div>
 
-                <div class="control navbar-item column custom-adjust">
-                  <div class="dropdown ">
+            <!-- Selecting Dropdown -->
+
+            <div class="control navbar-item column custom-adjust">
+              <div class="select is-multiple">
+                <select multiple size="3">
+                  <option value="generation-i">Generation 1</option>
+                  <option value="generation-ii">Generation 2</option>
+                  <option value="generation-iii">Generation 3</option>
+                  <option value="generation-iv">Generation 4</option>
+                  <option value="generation-v">Generation 5</option>
+                  <option value="generation-vi">Generation 6</option>
+                  <option value="generation-vii">Generation 7</option>
+                  <option value="generation-vii">Generation 8</option>
+                </select>
+              </div>
+              <!-- <div class="dropdown ">
 
                       <div class="dropdown-trigger">
                           <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
@@ -111,79 +129,90 @@
                           </div>
                       </div>
 
-                  </div>
-              </div>
-
-    
-                <div class="control navbar-item column custom-adjust">
-                    <div class="select">
-                        <select id="select-type">
-                            <option>Select Type</option>
-                            <option>~Any~</option>
-                            <option>Fire</option> 
-                            <option>Water</option> 
-                            <option>Grass</option> 
-                            <option>Electric</option>
-                            <option>Poison</option>
-                            <option>Ground</option> 
-                            <option>Flying</option>
-                            <option>Psychic</option> 
-                            <option>Bug</option> 
-                            <option>Ghost</option> 
-                            <option>Dark</option> 
-                            <option>Dragon</option> 
-                            <option>Steel</option> 
-                            <option>Fairy</option> 
-                        </select>
-                    </div>
-                </div>
-    
-                <div class="control navbar-item column custom-adjust">
-                    <div class="select">
-                        <select id="select-strength">
-                            <option>Effective Against</option>
-                            <option>~Any~</option>
-                            <option>Fire</option> 
-                            <option>Water</option> 
-                            <option>Grass</option> 
-                            <option>Electric</option>
-                            <option>Poison</option>
-                            <option>Ground</option> 
-                            <option>Flying</option>
-                            <option>Psychic</option> 
-                            <option>Bug</option> 
-                            <option>Ghost</option> 
-                            <option>Dark</option> 
-                            <option>Dragon</option> 
-                            <option>Steel</option> 
-                            <option>Fairy</option>
-
-                        </select>
-                    </div>
-                </div>
-                <!-- Submit Button -->
-                <div class="control navbar-item column custom-adjust">
-                    <button id="btn" class="button is-primary">Submit</button>
-                </div>
-            
-                
-                </form> 
+                  </div> -->
             </div>
-                
+
+            <div class="control navbar-item column custom-adjust">
+              <div class="select">
+                <select id="select-type">
+                  <option>Select Type</option>
+                  <option>~Any~</option>
+                  <option>Fire</option>
+                  <option>Water</option>
+                  <option>Grass</option>
+                  <option>Electric</option>
+                  <option>Poison</option>
+                  <option>Ground</option>
+                  <option>Flying</option>
+                  <option>Psychic</option>
+                  <option>Bug</option>
+                  <option>Ghost</option>
+                  <option>Dark</option>
+                  <option>Dragon</option>
+                  <option>Steel</option>
+                  <option>Fairy</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="control navbar-item column custom-adjust">
+              <div class="select">
+                <select id="select-strength">
+                  <option>Effective Against</option>
+                  <option>~Any~</option>
+                  <option>Fire</option>
+                  <option>Water</option>
+                  <option>Grass</option>
+                  <option>Electric</option>
+                  <option>Poison</option>
+                  <option>Ground</option>
+                  <option>Flying</option>
+                  <option>Psychic</option>
+                  <option>Bug</option>
+                  <option>Ghost</option>
+                  <option>Dark</option>
+                  <option>Dragon</option>
+                  <option>Steel</option>
+                  <option>Fairy</option>
+                </select>
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="control navbar-item column custom-adjust">
+              <button id="btn" class="button is-primary">Submit</button>
+            </div>
+          </form>
         </div>
-     
-      </nav>
+      </div>
+    </nav>
 
+    <!-- modal error message -->
+    <div id="modal-js-example" class="modal">
+      <div class="modal-background"></div>
 
-     
-     
-        <!-- Card Images  -->
-<div id="container" class = "container">
+      <div class="modal-content">
+        <div class="box">
+          <p>Looks like there's nothing here...</p>
+          <br />
+          <p>Please check for spelling and try again!</p>
+        </div>
+      </div>
 
+      <button
+        class="modal-close is-large"
+        id="close-modal"
+        aria-label="close"
+      ></button>
+    </div>
 
-       
-    
-        <!-- <div class="card">
+    <!-- modal trigger
+    <button class="js-modal-trigger" data-target="modal-js-example">
+      Open JS example modal
+    </button> -->
+
+    <!-- Card Images  -->
+    <div id="container" class="container">
+      <!-- <div class="card">
             <div class="card-image">
               <figure class="image is-4by3">
                 <img src="https://www.serebii.net/swordshield/pokemon/001.png" alt="Placeholder image">
@@ -207,14 +236,10 @@
               </figure>
             </div>
         </div> -->
+
+      <button class="button is-primary">Add to party!</button>
     </div>
 
-          
-          
-          
-
-       
-    
     <script src="assets/script.js" async defer></script>
   </body>
 </html>
