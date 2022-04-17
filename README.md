@@ -18,6 +18,6 @@ As an aspiring pokemon trainer, I want to build a 6-pokemon party to begin my qu
 
 Links: 
 
-Link to repo:
+Link to repo: https://github.com/JS19191898/pokemon-party-builder
 
 Link to deployed webpage: https://js19191898.github.io/pokemon-party-builder/
