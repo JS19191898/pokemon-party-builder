@@ -14,3 +14,10 @@ As an aspiring pokemon trainer, I want to build a 6-pokemon party to begin my qu
 * THEN the pokemon choices will fill from left to right, top to bottom.
 * WHEN I have finished selecting my party,
 * THEN I am presented with the option to progress to a "Congratulations" screen.
+
+
+Links: 
+
+Link to repo:
+
+Link to deployed webpage: https://js19191898.github.io/pokemon-party-builder/
