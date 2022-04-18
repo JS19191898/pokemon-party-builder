@@ -15,6 +15,7 @@ console.log(modalAlertEl);
 //functions that perform search citeria ------------------------->
 //Generates pokemon result from the input in the Search bar
 function generatePokemon(pokemon) {
+
   var baseUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`;
   console.log(pokemon);
   fetch(baseUrl)
@@ -23,15 +24,35 @@ function generatePokemon(pokemon) {
       if (response.status === 404) {
         console.log(response.status);
         modalAlert();
-        return null;
       }
-
       return response.json();
     })
     .then((data) => {
       console.log(data);
       generateCard(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
+}
+
+//converts name to id THEN calls generatePokemon
+function convertToID(pokemon) {
+  var baseUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`;
+  console.log(pokemon);
+
+  fetch(baseUrl)
+    .then((response) => {
+      console.log(response.status);
+      return response.json();
+    })
+    .then((data) => {
+      // console.log("Fetched ID result: ")
+      // console.log(data.id);
+      generatePokemon(data.id);
+    });
+
+  //return Pokeid;
 }
 
 function findGeneration(generation) {
@@ -50,7 +71,7 @@ function findGeneration(generation) {
 
       data.pokemon_species.forEach((element) => {
         console.log(element.name);
-        generatePokemon(element.name);
+        convertToID(element.name);
       });
 
       // for(var i = 0; i < data.pokemon_species.length; i++) {
@@ -70,7 +91,6 @@ function modalAlert() {
 function closeModal() {
   modalAlertEl.classList.remove("is-active");
 }
-//generates pokemon results from "Generation" input
 
 //generates pokemon results from "type" input
 
@@ -79,18 +99,15 @@ function closeModal() {
 //TODO: function that saves pokemon (into local storage) after user selects it -----------
 //(this will need to make the container results clickable with an eventlistener, and saving to the local storage)
 
-// ad.eventlistener to 'click' submit button
-
 // API from PokeAPI var baseUrl https://pokeapi.co/api/v2/type/{id or name}/
 
 // grabs parent div to generate card from given types of search options
 function generateCard(data) {
-
   // clears out previous results
   containerEl.innerHTML = "";
 
   //Fetch call to get the pokedex description
-  var baseUrl = `https://pokeapi.co/api/v2/pokemon-species/${data.name}/`;
+  var baseUrl = `https://pokeapi.co/api/v2/pokemon-species/${data.id}/`;
   console.log(data.name);
   fetch(baseUrl)
     .then((response) => {
@@ -110,58 +127,60 @@ function generateCard(data) {
       });
 
       var div = document.createElement("div");
-      div.class = "tile is-ancestor";
+      div.classList.add("card");
+      div.classList.add("column");
+      div.classList.add("is-2");
+      div.classList.add("m-1");
+      div.classList.add("is-flex-glow-1");
+      div.classList.add("is-flex-shrink-0");
       div.innerHTML =
-        ` <div class="tile is-parent">
-
-  <div class="card coulmn tile is-child is-3">
-      <div class="card-image">
+        `
+        <div class="card-image">
           <figure class="image is-4by3">
-              <img src=${data.sprites.other["official-artwork"].front_default} alt="Bulbasaur">
+              <img src=${data.sprites.other["official-artwork"].front_default} alt="${data.name}">
           </figure>
-      </div>
-      <div class="card-content">
-          <div id="pokemon-title" class="media">
+        </div>
+        <div class="card-content">
+            <div id="pokemon-title" class="media">
               <div class="media-left">
-                  <p class="title is-3">${data.species.name}</p>
-                  <p class="subtitle is-5">${specData.genera[7].genus}</p>
+                  <p class="title">${data.name}</p>
+                  <p class="subtitle ">${specData.genera[7].genus}</p>
               </div>
               <div class="media-content ">
 
                   <div class="type-image title is-pulled-right is-4">` +
         types +
         `</div>    
-
-                  <div class="subtitle is-pulled-right">
-                  </div>
               </div>
-          </div>
-          <div class="content">
-              ${specData.flavor_text_entries[8].flavor_text}
-          </div>
-          
-      </div>
-  </div>
-  </div>
-  <button  class="button is-primary">Add to Party!</button>
+            </div>
+            <div class="content">
+            ${specData.flavor_text_entries[6].flavor_text}
+            </div>
+        </div>
+  <button  class="button is-primary" id="addPokemon">Add to Party!</button>
   <button  class="button is-primary">Remove from Party!</button>
-  <button  class="button is-primary">Clear arty!</button>`;
-
-
-
+  <button  class="button is-primary">Clear Party!</button>`;
+      //establishing the click function for the "add to party" button
+      // $("#addPokemon").on("click", function () {
+      //   var selectedPokemon = $(this).parent().attr("#pokemonResult");
+      //   // var time = $(this).parent().attr("id");
+      //   //puts the items from the user into the local storage
+      //   localStorage.setItem(selectedPokemon);
+      //   });
       containerEl.appendChild(div);
     });
 }
 // generatePokemon();
-
 searchFormEl.addEventListener("submit", function (event) {
+  //debugger
   event.preventDefault();
   // console.log("clicky click")
-  generatePokemon(textUserInputEl.value);
-  // console.log(textUserInputEl.value);
+  //generatePokemon(textUserInputEl.value);
+
+  convertToID(textUserInputEl.value.toLowerCase());
 });
 
-generationSelectEl.addEventListener("click", function (event) {
+generationSelectEl.addEventListener("submit", function (event) {
   //debugger
 
   event.preventDefault();
@@ -170,7 +189,7 @@ generationSelectEl.addEventListener("click", function (event) {
   findGeneration(event.target.value);
 });
 
-generationSelectEl.addEventListener("change", function (event) {});
+
 
 closeModalEl.addEventListener("click", closeModal);
 
