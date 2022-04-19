@@ -24,4 +24,6 @@ As an aspiring pokémon trainer, I want to build a 6-pokemon party to begin my q
 * THEN I am presented with my selected pokémon saved to my local storage.
 ```
 
+## Credit
+[Erica Breig](https://github.com/EricaBreig), [Jonathan Swann](https://github.com/JS19191898), [Mikhail Sookwah](), [Novia Phan]()
 
