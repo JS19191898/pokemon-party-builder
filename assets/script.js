@@ -1,16 +1,17 @@
 // global Variables
-var searchTextEl = document.querySelector("#searchbar");
 var generationSelectEl = document.querySelector("#generation-select");
 var typeSelectEl = document.querySelector("#select-type");
-var strengthSelectEl = document.querySelector("#select-strength");
 var textUserInputEl = document.querySelector("#pokemon");
 var baseUrl = "https://pokeapi.co/api/v2/";
-var meme = document.querySelector("#meme");
+var baseGiphyURL = `https://api.giphy.com/v1/gifs`;
+var giphyKey = "cRLAat2xLf4fcaSQWWaSNtv1DqYQ2sAu";
+var giphyUrl = `${baseGiphyURL}/random?api_key=${giphyKey}&tag=&rating=pg-13`;
 var searchFormEl = document.querySelector("#search-form");
 var containerEl = document.querySelector("#container");
 var modalAlertEl = document.querySelector("#modal-js-example");
 var closeModalEl = document.querySelector("#close-modal");
 var modalMemeEl = document.querySelector("#modal-meme");
+var meme = document.querySelector("#meme");
 var pokemonParty = [];
 var containerGallery = document.querySelector(".containerGallery");
 
@@ -97,11 +98,10 @@ function modalAlert() {
   modalAlertEl.classList.add("is-active");
 
   function displayMeme() {
-    modalMemeEl.innerHTML = "";
-    var baseGiphyURL = `https://api.giphy.com/v1/gifs/`;
-    var giphyKey = "eUn43t4MCJuRT2R8i4AccT84W84VvdEz";
-    var giphyUrl = `${baseGiphyURL}random?api_key=${giphyKey}&tag=&rating=pg-13`;
-
+    // var baseGiphyURL = `https://api.giphy.com/v1/gifs`;
+    // var giphyKey = "cRLAat2xLf4fcaSQWWaSNtv1DqYQ2sAu";
+    // var giphyUrl = `${baseGiphyURL}/random?api_key=${giphyKey}&tag=&rating=pg-13`;
+    modalMemeEl.innerHTML = `<p><img src="${giphyUrl}" alt="Randomly generated gif" height="100px" width="100px"></p>`;
     console.log(meme);
     fetch(giphyUrl)
       .then((response) => {
