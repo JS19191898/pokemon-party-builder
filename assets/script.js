@@ -3,9 +3,6 @@ var generationSelectEl = document.querySelector("#generation-select");
 var typeSelectEl = document.querySelector("#select-type");
 var textUserInputEl = document.querySelector("#pokemon");
 var baseUrl = "https://pokeapi.co/api/v2/";
-var baseGiphyURL = `https://api.giphy.com/v1/gifs`;
-var giphyKey = "cRLAat2xLf4fcaSQWWaSNtv1DqYQ2sAu";
-var giphyUrl = `${baseGiphyURL}/random?api_key=${giphyKey}&tag=&rating=pg-13`;
 var searchFormEl = document.querySelector("#search-form");
 var containerEl = document.querySelector("#container");
 var modalAlertEl = document.querySelector("#modal-js-example");
@@ -97,10 +94,10 @@ function modalAlert() {
   displayMeme();
   modalAlertEl.classList.add("is-active");
 
-  function displayMeme() {
-    // var baseGiphyURL = `https://api.giphy.com/v1/gifs`;
-    // var giphyKey = "cRLAat2xLf4fcaSQWWaSNtv1DqYQ2sAu";
-    // var giphyUrl = `${baseGiphyURL}/random?api_key=${giphyKey}&tag=&rating=pg-13`;
+  function displayMeme(meme) {
+    var baseGiphyURL = `https://api.giphy.com/v1/gifs`;
+    var giphyKey = "cRLAat2xLf4fcaSQWWaSNtv1DqYQ2sAu";
+    var giphyUrl = `${baseGiphyURL}/random?api_key=${giphyKey}&tag=&rating=pg-13`;
     modalMemeEl.innerHTML = `<p><img src="${giphyUrl}" alt="Randomly generated gif" height="100px" width="100px"></p>`;
     console.log(meme);
     fetch(giphyUrl)
@@ -116,6 +113,7 @@ function modalAlert() {
         console.log("meme err", err);
       });
   }
+  displayMeme();
 }
 
 function closeModal() {
@@ -158,8 +156,8 @@ function generateCard({ id, name, sprites, types }) {
       div.classList.add("column");
       div.classList.add("is-2");
       div.classList.add("m-1");
-      div.classList.add("is-flex-grow-1");
-      div.classList.add("is-flex-shrink-0");
+      // div.classList.add("is-flex-grow-1");
+      // div.classList.add("is-flex-shrink-0");
       div.innerHTML =
         `
         <div class="card-image">
@@ -175,7 +173,7 @@ function generateCard({ id, name, sprites, types }) {
               </div>
               <div class="media-content ">
 
-                  <div class="type-image title is-pulled-right is-4">` +
+                  <div class="type-image is-pulled-right is-4">` +
         pokemonTypes +
         `</div>    
               </div>
@@ -192,6 +190,7 @@ function generateCard({ id, name, sprites, types }) {
       containerEl.appendChild(div);
 
       var addPokemon = document.getElementById("addPokemon");
+
       addPokemon.addEventListener("click", function (event) {
         alert("Added");
         var card = event.target.closest(".card");
@@ -220,7 +219,6 @@ function generateCard({ id, name, sprites, types }) {
           pokemonParty = newName;
           console.log(event.target.closest(".card"));
           event.target.closest(".card").remove();
-          // displayPokemon();
         });
 
         // button.setAttribute("data-name", )
@@ -243,17 +241,9 @@ function generateCard({ id, name, sprites, types }) {
 }
 
 function displayPokemon(clone) {
-  //   containerGallery.innerHTML = ``;
-  //   for (var i = 0; i < pokemonParty.length; i++) {
-  //     containerGallery.innerHTML += `<h1>Pokemon Party</h1>
-  //     <h1 class="Pokemon">${pokemonParty[i].name}</h1>
-  //     <img src="${pokemonParty[i].image}" alt="" id="selectedPokemon">`;
-  //   }
   containerGallery.appendChild(clone);
 }
 
-//     });
-// }
 // generatePokemon();
 searchFormEl.addEventListener("submit", function (event) {
   //debugger

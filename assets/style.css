@@ -1,11 +1,38 @@
+*{
+  color: black;
+}
+
 body {
   font-family: "Righteous", cursive;
+  background-image: url(https://wallpapercave.com/wp/wp3170170.jpg);
+  background-repeat: repeat-x;
+  /* background-color: black; */
 }
 
 h1 {
   color: white;
   text-align: center;
   font-size: 30px;
+}
+
+#contact {
+  font-size: 25px;
+}
+
+#currentDay,
+#subject,
+#fname,
+#lname {
+  box-sizing: border-box;
+  border: solid;
+  border: 2px solid transparent;
+}
+
+#currentDay {
+  background: linear-gradient(to right, white, white),
+    linear-gradient(to right, yellow, red);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
 }
 
 .dashboard {
@@ -21,13 +48,15 @@ h1 {
 
 .navbar-menu {
   background-image: linear-gradient(to bottom right, red, blue);
+  display: flex;
+  justify-content: space-between;
 }
 
 .hero-image {
   background-image: url("https://camo.githubusercontent.com/90f24316b24433bf0a2778d95ca93ad264093645a71d2eb9f569cdbc34fbfc6d/68747470733a2f2f6372797374616c2d63646e322e6372797374616c636f6d6d657263652e636f6d2f70686f746f732f363333303536352f73706c61736842616e6e65725f706f6b656d6f6e2e6a7067");
 
   /* Setting height */
-  height: 35vh;
+  height: 50vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,8 +85,8 @@ h1 {
   background-size: 50vh;
 }
 
-#pokeTitle {
-  margin-top: 20px;
+#pokeTitle{
+  color:black
 }
 
 .type {
@@ -166,6 +195,87 @@ h1 {
   border: 1px solid #9e3074;
 }
 
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #2b2a2c3b;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#pokeball {
+  height: 100px;
+}
+
+.btn {
+  cursor: pointer;
+  box-shadow: 1rem;
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.card {
+  padding: 15px;
+  margin: 15px;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 3rem;
+  transform: translateY(-0.34rem);
+  transition: transform 150ms;
+}
+
+#footer {
+  background-image: url(https://i.pinimg.com/originals/df/4e/8b/df4e8ba28f912bf9cdf9fa0dfc196411.png);
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column,
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #pokemon-menu {
     margin: 0 15px;
@@ -180,7 +290,7 @@ h1 {
   }
 }
 
-.currentDay {
+#currentDay {
   text-align: center;
 }
 
