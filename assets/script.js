@@ -39,7 +39,19 @@ function generatePokemon(pokemon) {
     })
     .then((data) => {
       console.log(data);
-      generateCard(data);
+
+      //Checks if any specific type is selected or not
+      if (typeSelectEl.value === "any") {
+        generateCard(data);
+      } else {
+        //debugger
+        data.types.forEach((element) => {
+          if (element.type.name === typeSelectEl.value.toLowerCase()) {
+            console.log("Pokemon result: " + data.name);
+            generateCard(data);
+          }
+        });
+      }
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -70,6 +82,7 @@ function convertToID(pokemon) {
     });
 }
 
+//Gets pokemon form each generation
 function findGeneration(generation) {
   var baseUrl = `https://pokeapi.co/api/v2/generation/${generation}/`;
   console.log(generation);
@@ -89,25 +102,31 @@ function findGeneration(generation) {
     });
 }
 
+//Loops throught find generation
+function getAllGenerations() {
+  for (var i = 2; i < generationSelectEl.length; i++) {
+    console.log(generationSelectEl[i].value);
+    findGeneration(generationSelectEl[i].value);
+  }
+}
+
 function modalAlert() {
   console.log("modal");
   displayMeme();
   modalAlertEl.classList.add("is-active");
 
-  function displayMeme(meme) {
+  function displayMeme(giphyUrl) {
     var baseGiphyURL = `https://api.giphy.com/v1/gifs`;
     var giphyKey = "cRLAat2xLf4fcaSQWWaSNtv1DqYQ2sAu";
     var giphyUrl = `${baseGiphyURL}/random?api_key=${giphyKey}&tag=&rating=pg-13`;
-    modalMemeEl.innerHTML = `<p><img src="${giphyUrl}" alt="Randomly generated gif" height="100px" width="100px"></p>`;
-    console.log(meme);
+
     fetch(giphyUrl)
       .then((response) => {
         console.log(response.status);
         return response.json();
       })
       .then((data) => {
-        console.log("data", data);
-        // modalMemeEl.
+        modalMemeEl.src = data.data.embed_url;
       })
       .catch((err) => {
         console.log("meme err", err);
@@ -151,6 +170,14 @@ function generateCard({ id, name, sprites, types }) {
         console.log(pokemonTypes);
       });
 
+      //Loop to find the lates english versions of the pokedex descriptions
+      var englishPokeDescript = "";
+      specData.flavor_text_entries.forEach((element) => {
+        if (element.language.name === "en") {
+          englishPokeDescript = element.flavor_text;
+        }
+      });
+
       var div = document.createElement("div");
       div.classList.add("card");
       div.classList.add("column");
@@ -178,9 +205,9 @@ function generateCard({ id, name, sprites, types }) {
         `</div>    
               </div>
             </div>
-            <div class="content">
-            ${specData.flavor_text_entries[6].flavor_text}
-            </div>
+            <div class="content">` +
+        englishPokeDescript +
+        `</div>
         </div>
         <button  class="button is-primary" data-name="${name}" data-img="${sprites.other["official-artwork"].front_default}" id="addPokemon">Add to Party!</button>
         <button  class="button is-primary" id= "clearParty">Clear Party!</button>`;
@@ -250,16 +277,43 @@ searchFormEl.addEventListener("submit", function (event) {
   event.preventDefault();
 
   //displayMeme();
-  convertToID(textUserInputEl.value.toLowerCase());
+
+  //Search function that scheck if any name is writen in the
+  // searchbar, if not, checks if any generation is selected
+  if (textUserInputEl.value !== "") {
+    //Default result through the search bar
+    console.log("Search result: " + textUserInputEl.value.toLowerCase());
+    convertToID(textUserInputEl.value.toLowerCase());
+  } else {
+    if (generationSelectEl.value === "any") {
+      if (typeSelectEl.value === "any") {
+        //Search all!!!
+        //console.log("Search result: all Pokemon!");
+        getAllGenerations();
+      } else {
+        //Go though all generation by filter by each type
+        console.log("Pokemon type: " + typeSelectEl.value.toLowerCase());
+        getAllGenerations();
+      }
+    } else if (typeSelectEl.value === "any") {
+      //Itterate through specifit generation
+      console.log("Generation: " + generationSelectEl.value);
+      findGeneration(generationSelectEl.value);
+    } else {
+      console.log("Generation: " + generationSelectEl.value);
+      console.log("Pokemon type: " + typeSelectEl.value.toLowerCase());
+      findGeneration(generationSelectEl.value);
+    }
+  }
 });
 
-generationSelectEl.addEventListener("click", function (event) {
-  //debugger
+// generationSelectEl.addEventListener("click", function (event) {
+//   //debugger
 
-  event.preventDefault();
-  //console.log(event.target.value);
+//   event.preventDefault();
+//   //console.log(event.target.value);
 
-  findGeneration(event.target.value);
-});
+//   findGeneration(event.target.value);
+// });
 
 // closeModalEl.addEventListener("click", closeModal);

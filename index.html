@@ -43,7 +43,7 @@
           <!-- <h2>Search for your Pokémon!</h2> -->
           <!-- Form Control on Bulma -->
           <form class="navbar-start columns is-vcentered" id="search-form">
-            <div class="field navbar-item column is-4">
+            <div class="field navbar-item column is-5">
               <label class="label is-size-5" id="searchbar"
                 >Search for your Pokémon!</label
               >
@@ -59,9 +59,11 @@
 
             <!-- Selecting Dropdown -->
 
-            <div class="control navbar-item column custom-adjust">
-              <div id="generation-select" class="select is-multiple">
-                <select multiple size="3">
+            <div id="genSelContainer" class="control navbar-item column is-4 custom-adjust">
+              <div  class="select ">
+                <select id="generation-select" >
+                  <option disabled>Select Generation</option>
+                  <option value="any">~Any Generation~</option>
                   <option value="generation-i">Generation 1</option>
                   <option value="generation-ii">Generation 2</option>
                   <option value="generation-iii">Generation 3</option>
@@ -137,12 +139,11 @@
                   </div> -->
             </div>
 
-            <div class="control navbar-item column custom-adjust">
+            <div class="control navbar-item column is-3 custom-adjust">
               <div class="select">
                 <select id="select-type">
-                  <option>Select Type</option>
-                  <option>~Any~</option>
-                  <option>Normal</option>
+                  <option disabled>Select Type</option>
+                  <option value="any">~Any Type~</option>
                   <option>Fire</option>
                   <option>Water</option>
                   <option>Grass</option>
@@ -180,7 +181,11 @@
           <br />
           <p>Please check for spelling and try again! UwU</p>
           <br />
-          <div id="modal-meme"></div>
+          <p>Make sure to leave the search bar empty when using filters!</p>
+          <br />
+          <p>
+            <iframe id="modal-meme" width="300" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/warnerbrosde-R6gvnAxj2ISzJdbA63">via GIPHY</a></p>
+          </p>
         </div>
       </div>
 

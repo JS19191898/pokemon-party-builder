@@ -1,4 +1,4 @@
-*{
+* {
   color: black;
 }
 
@@ -67,9 +67,9 @@ h1 {
   display: none;
 }
 
-#modal-meme {
+.modal-content {
   height: 800px;
-  width: 800px;
+  width: 500px;
 }
 
 #pokemon-menu {
@@ -85,8 +85,8 @@ h1 {
   background-size: 50vh;
 }
 
-#pokeTitle{
-  color:black
+#pokeTitle {
+  color: black;
 }
 
 .type {
@@ -249,6 +249,14 @@ input[type="submit"]:hover {
   box-shadow: 1rem;
   transform: translateY(-0.1rem);
   transition: transform 150ms;
+}
+
+#btn {
+  margin-top: 10px;
+}
+
+#genSelContainer {
+  width: auto;
 }
 
 .card {
