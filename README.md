@@ -1,23 +1,27 @@
 # Pokémon Party Creator
+### Deployed page:
+[Pokémon Party Builder](https://js19191898.github.io/pokemon-party-builder/)
+### Repo:
+[Pokémon Party Builder](https://github.com/JS19191898/pokemon-party-builder)
+
+## Description:
+A simple app where the user can search for pokémon by name, generation, and/or type.
 
 ## User Story
-As an aspiring pokemon trainer, I want to build a 6-pokemon party to begin my quest to be the very best there ever was!
+```
+As an aspiring pokémon trainer, I want to build a 6-pokemon party to begin my quest, to be the very best there ever was!
 
-* GIVEN when I begin to build my pokemon party:
-* WHEN I click on a party slot to add a pokemon,
-* THEN I am taken to another page to search for my desired pokemon for this slot.
-* WHEN I am searching for a pokemon to add,
+* GIVEN when I begin to build my pokémon party:
+* WHEN I click on a party slot to add a pokémon,
+* THEN I am taken to another page to search for my desired pokémon for this slot.
+* WHEN I am searching for a pokémon to add,
 * THEN I can choose to search by name, or search for filtered options.
-* WHEN I confirm a pokemon selection,
-* THEN said pokemon will appear in the party slot on the first page.
+* WHEN I confirm a pokémon selection,
+* THEN said pokémon will appear in the party container on the first page.
 * WHEN I am building my party roster,
-* THEN the pokemon choices will fill from left to right, top to bottom.
+* THEN the pokémon choices will fill from left to right, top to bottom.
 * WHEN I have finished selecting my party,
-* THEN I am presented with the option to progress to a "Congratulations" screen.
+* THEN I am presented with my selected pokémon saved to my local storage.
+```
 
 
-Links: 
-
-Link to repo: https://github.com/JS19191898/pokemon-party-builder
-
-Link to deployed webpage: https://js19191898.github.io/pokemon-party-builder/
