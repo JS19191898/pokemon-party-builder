@@ -7,6 +7,8 @@
     <title>Pokémon Party Builder!</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--Link to jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,6 +27,8 @@
     <!--Local style sheet-->
     <link rel="stylesheet" href="assets/style.css" />
   </head>
+
+  <!-- container gallery where images render -->
 
   <body>
     <header class="dashboard">
@@ -185,8 +189,8 @@
         </div>
       </div>
     </nav>
+    <p id="currentDay">Current time</p>
 
-    <!-- modal error message -->
     <div id="modal-js-example" class="modal">
       <div class="modal-background"></div>
 
@@ -197,6 +201,7 @@
           <p>Please check for spelling and try again!</p>
           <br />
           <p>Please make sure to only use lowercase letters!</p>
+          <div id="modal-meme"></div>
         </div>
       </div>
 
@@ -211,6 +216,14 @@
     <button class="js-modal-trigger" data-target="modal-js-example">
       Open JS example modal
     </button> -->
+
+    <!-- Container Gallery -->
+    <h1 id="pokeTitle" class="title">Pokémon Party</h1>
+
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/msoaACG940Y?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+    <div
+      class="containerGallery is-flex-wrap-wrap is-justify-content-center is-fluid columns"
+    ></div>
 
     <!-- Card Images  -->
     <div
@@ -247,7 +260,9 @@
             </div>
       </div> -->
     </div>
-    <button class="button is-primary">Add to party!</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/script.js" async defer></script>
   </body>
 </html>

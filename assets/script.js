@@ -5,34 +5,46 @@ var typeSelectEl = document.querySelector("#select-type");
 var strengthSelectEl = document.querySelector("#select-strength");
 var textUserInputEl = document.querySelector("#pokemon");
 var baseUrl = "https://pokeapi.co/api/v2/";
+var meme = document.querySelector("#meme");
 var searchFormEl = document.querySelector("#search-form");
 var containerEl = document.querySelector("#container");
 var modalAlertEl = document.querySelector("#modal-js-example");
 var closeModalEl = document.querySelector("#close-modal");
-console.log(closeModalEl);
-console.log(modalAlertEl);
+var modalMemeEl = document.querySelector("#modal-meme");
+var pokemonParty = [];
+var containerGallery = document.querySelector(".containerGallery");
+
+if (localStorage.getItem("name")) {
+  pokemonParty = JSON.parse(localStorage.getItem("name"));
+}
+
+// Moment.JS
+var currentDay = document.querySelector("#currentDay");
+currentDay.textContent = moment().format("LLLL");
+var currentHour = moment().hour();
 
 //functions that perform search citeria ------------------------->
 //Generates pokemon result from the input in the Search bar
 function generatePokemon(pokemon) {
-
   var baseUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`;
   console.log(pokemon);
+  console.log("generate pokemon");
   fetch(baseUrl)
     .then((response) => {
-      console.log(response.status);
-      if (response.status === 404) {
-        console.log(response.status);
-        modalAlert();
-      }
+      console.log("status");
+      // if (response.status === 404) {
+      //   console.log("status", response.status);
+      //   modalAlert();
+      //   return;
+      // }
       return response.json();
     })
     .then((data) => {
       console.log(data);
       generateCard(data);
     })
-    .catch(error => {
-      console.error('Error:', error);
+    .catch((error) => {
+      console.error("Error:", error);
     });
 }
 
@@ -44,20 +56,23 @@ function convertToID(pokemon) {
   fetch(baseUrl)
     .then((response) => {
       console.log(response.status);
+      if (response.status === 404) {
+        console.log("status", response.status);
+        modalAlert();
+        return;
+      }
       return response.json();
     })
     .then((data) => {
-      // console.log("Fetched ID result: ")
-      // console.log(data.id);
+      console.log(data);
       generatePokemon(data.id);
+    })
+    .catch((err) => {
+      console.log(err);
     });
-
-  //return Pokeid;
 }
 
 function findGeneration(generation) {
-  //debugger
-
   var baseUrl = `https://pokeapi.co/api/v2/generation/${generation}/`;
   console.log(generation);
 
@@ -73,42 +88,54 @@ function findGeneration(generation) {
         console.log(element.name);
         convertToID(element.name);
       });
-
-      // for(var i = 0; i < data.pokemon_species.length; i++) {
-      //   console.log(data.pokemon_species[i].name);
-      //   generatePokemon(data.pokemon_species[i].name);
-      // }
-
-      // console.log(data.pokemon_species[0].name);
-      // generatePokemon(data.pokemon_species[0].name);
     });
 }
 
 function modalAlert() {
+  console.log("modal");
+  displayMeme();
   modalAlertEl.classList.add("is-active");
+
+  function displayMeme() {
+    modalMemeEl.innerHTML = "";
+    var baseGiphyURL = `https://api.giphy.com/v1/gifs/`;
+    var giphyKey = "eUn43t4MCJuRT2R8i4AccT84W84VvdEz";
+    var giphyUrl = `${baseGiphyURL}random?api_key=${giphyKey}&tag=&rating=pg-13`;
+
+    console.log(meme);
+    fetch(giphyUrl)
+      .then((response) => {
+        console.log(response.status);
+        return response.json();
+      })
+      .then((data) => {
+        console.log("data", data);
+        // modalMemeEl.
+      })
+      .catch((err) => {
+        console.log("meme err", err);
+      });
+  }
 }
 
 function closeModal() {
   modalAlertEl.classList.remove("is-active");
 }
 
+closeModalEl.addEventListener("click", closeModal);
+
 //generates pokemon results from "type" input
 
 //generates pokemon results from "effective against" input
 
-//TODO: function that saves pokemon (into local storage) after user selects it -----------
-//(this will need to make the container results clickable with an eventlistener, and saving to the local storage)
-
-// API from PokeAPI var baseUrl https://pokeapi.co/api/v2/type/{id or name}/
-
 // grabs parent div to generate card from given types of search options
-function generateCard(data) {
-  // clears out previous results
+function generateCard({ id, name, sprites, types }) {
+  // clears out previous results23e
   containerEl.innerHTML = "";
 
   //Fetch call to get the pokedex description
-  var baseUrl = `https://pokeapi.co/api/v2/pokemon-species/${data.id}/`;
-  console.log(data.name);
+  var baseUrl = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
+  console.log(name);
   fetch(baseUrl)
     .then((response) => {
       console.log(response);
@@ -118,12 +145,12 @@ function generateCard(data) {
       console.log(specData);
 
       //Small loop to cycle through the types array
-      var types = "";
-      data.types.forEach((element) => {
+      var pokemonTypes = "";
+      types.forEach((element) => {
         console.log(element.type.name);
 
-        types += `<p class="type ${element.type.name}">${element.type.name}</p>`;
-        console.log(types);
+        pokemonTypes += `<p class="type ${element.type.name}">${element.type.name}</p>`;
+        console.log(pokemonTypes);
       });
 
       var div = document.createElement("div");
@@ -131,25 +158,25 @@ function generateCard(data) {
       div.classList.add("column");
       div.classList.add("is-2");
       div.classList.add("m-1");
-      div.classList.add("is-flex-glow-1");
+      div.classList.add("is-flex-grow-1");
       div.classList.add("is-flex-shrink-0");
       div.innerHTML =
         `
         <div class="card-image">
           <figure class="image is-4by3">
-              <img src=${data.sprites.other["official-artwork"].front_default} alt="${data.name}">
+              <img src=${sprites.other["official-artwork"].front_default} alt="${name}">
           </figure>
         </div>
         <div class="card-content">
             <div id="pokemon-title" class="media">
               <div class="media-left">
-                  <p class="title">${data.name}</p>
+                  <p class="title">${name}</p>
                   <p class="subtitle ">${specData.genera[7].genus}</p>
               </div>
               <div class="media-content ">
 
                   <div class="type-image title is-pulled-right is-4">` +
-        types +
+        pokemonTypes +
         `</div>    
               </div>
             </div>
@@ -157,30 +184,86 @@ function generateCard(data) {
             ${specData.flavor_text_entries[6].flavor_text}
             </div>
         </div>
-  <button  class="button is-primary" id="addPokemon">Add to Party!</button>
-  <button  class="button is-primary">Remove from Party!</button>
-  <button  class="button is-primary">Clear Party!</button>`;
+        <button  class="button is-primary" data-name="${name}" data-img="${sprites.other["official-artwork"].front_default}" id="addPokemon">Add to Party!</button>
+        <button  class="button is-primary" id= "clearParty">Clear Party!</button>`;
+
       //establishing the click function for the "add to party" button
-      // $("#addPokemon").on("click", function () {
-      //   var selectedPokemon = $(this).parent().attr("#pokemonResult");
-      //   // var time = $(this).parent().attr("id");
-      //   //puts the items from the user into the local storage
-      //   localStorage.setItem(selectedPokemon);
-      //   });
+
       containerEl.appendChild(div);
+
+      var addPokemon = document.getElementById("addPokemon");
+      addPokemon.addEventListener("click", function (event) {
+        alert("Added");
+        var card = event.target.closest(".card");
+        console.log(card);
+        var clone = card.cloneNode(true);
+        clone.querySelector("#addPokemon").remove();
+
+        var button = document.createElement("button");
+        var name = event.target.getAttribute("data-name");
+        button.setAttribute("data-name", name);
+        button.classList = "button is-primary";
+        button.innerText = "Remove Pokemon";
+        clone.appendChild(button);
+
+        // var removePokemon = document.getElementById("removePokemon");
+        button.addEventListener("click", function (event) {
+          alert("Removed");
+          var pokemonName = this.getAttribute("data-name");
+          var newName = pokemonParty.filter(function (pokemon) {
+            console.log("pokemon LS", pokemon);
+            return pokemon.name !== pokemonName;
+          });
+
+          console.log(newName);
+          localStorage.setItem("name", JSON.stringify(newName));
+          pokemonParty = newName;
+          console.log(event.target.closest(".card"));
+          event.target.closest(".card").remove();
+          // displayPokemon();
+        });
+
+        // button.setAttribute("data-name", )
+        // <button  class="button is-primary" id="removePokemon" data-name="${name}" data-img="${sprites.other["official-artwork"].front_default}">Remove from Party!</button>
+        //var name = this.getAttribute("data-name");
+        var image = this.getAttribute("data-img");
+        pokemonParty.push({ name, image });
+        localStorage.setItem("name", JSON.stringify(pokemonParty));
+        displayPokemon(clone);
+      });
+
+      // displayPokemon();
+
+      var clearParty = document.getElementById("clearParty");
+      clearParty.addEventListener("click", function () {
+        alert("Cleared Party");
+        localStorage.clear("name");
+      });
     });
 }
+
+function displayPokemon(clone) {
+  //   containerGallery.innerHTML = ``;
+  //   for (var i = 0; i < pokemonParty.length; i++) {
+  //     containerGallery.innerHTML += `<h1>Pokemon Party</h1>
+  //     <h1 class="Pokemon">${pokemonParty[i].name}</h1>
+  //     <img src="${pokemonParty[i].image}" alt="" id="selectedPokemon">`;
+  //   }
+  containerGallery.appendChild(clone);
+}
+
+//     });
+// }
 // generatePokemon();
 searchFormEl.addEventListener("submit", function (event) {
   //debugger
   event.preventDefault();
-  // console.log("clicky click")
-  //generatePokemon(textUserInputEl.value);
 
+  //displayMeme();
   convertToID(textUserInputEl.value.toLowerCase());
 });
 
-generationSelectEl.addEventListener("submit", function (event) {
+generationSelectEl.addEventListener("click", function (event) {
   //debugger
 
   event.preventDefault();
@@ -189,18 +272,4 @@ generationSelectEl.addEventListener("submit", function (event) {
   findGeneration(event.target.value);
 });
 
-
-
-closeModalEl.addEventListener("click", closeModal);
-
-//function that lets user take a photo of their entire selected party (OPTIONAL)
-
-// !<-------------------------------->
-// // Saving to local storage
-// localStorage.setItem():
-
-// Remove Data from Local Storage
-// localStorage.removeItem(key)
-
-// Remove All (Clear Local Storage)
-// localStorage.clear();
+// closeModalEl.addEventListener("click", closeModal);
