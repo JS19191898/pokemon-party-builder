@@ -63,10 +63,6 @@ h1 {
   position: relative;
 }
 
-.hide {
-  display: none;
-}
-
 .modal-content {
   height: 800px;
   width: 500px;

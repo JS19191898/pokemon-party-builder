@@ -30,11 +30,6 @@ function generatePokemon(pokemon) {
   fetch(baseUrl)
     .then((response) => {
       console.log("status");
-      // if (response.status === 404) {
-      //   console.log("status", response.status);
-      //   modalAlert();
-      //   return;
-      // }
       return response.json();
     })
     .then((data) => {
@@ -141,10 +136,6 @@ function closeModal() {
 
 closeModalEl.addEventListener("click", closeModal);
 
-//generates pokemon results from "type" input
-
-//generates pokemon results from "effective against" input
-
 // grabs parent div to generate card from given types of search options
 function generateCard({ id, name, sprites, types }) {
   // clears out previous results23e
@@ -199,7 +190,6 @@ function generateCard({ id, name, sprites, types }) {
                   <p class="subtitle ">${specData.genera[7].genus}</p>
               </div>
               <div class="media-content ">
-
                   <div class="type-image is-pulled-right is-4">` +
         pokemonTypes +
         `</div>    
@@ -219,7 +209,7 @@ function generateCard({ id, name, sprites, types }) {
       var addPokemon = document.getElementById("addPokemon");
 
       addPokemon.addEventListener("click", function (event) {
-        alert("Added");
+        // alert("Added");
         var card = event.target.closest(".card");
         console.log(card);
         var clone = card.cloneNode(true);
@@ -234,7 +224,7 @@ function generateCard({ id, name, sprites, types }) {
 
         // var removePokemon = document.getElementById("removePokemon");
         button.addEventListener("click", function (event) {
-          alert("Removed");
+          // alert("Removed");
           var pokemonName = this.getAttribute("data-name");
           var newName = pokemonParty.filter(function (pokemon) {
             console.log("pokemon LS", pokemon);
@@ -248,20 +238,15 @@ function generateCard({ id, name, sprites, types }) {
           event.target.closest(".card").remove();
         });
 
-        // button.setAttribute("data-name", )
-        // <button  class="button is-primary" id="removePokemon" data-name="${name}" data-img="${sprites.other["official-artwork"].front_default}">Remove from Party!</button>
-        //var name = this.getAttribute("data-name");
         var image = this.getAttribute("data-img");
         pokemonParty.push({ name, image });
         localStorage.setItem("name", JSON.stringify(pokemonParty));
         displayPokemon(clone);
       });
 
-      // displayPokemon();
-
       var clearParty = document.getElementById("clearParty");
       clearParty.addEventListener("click", function () {
-        alert("Cleared Party");
+        // alert("Cleared Party");
         localStorage.clear("name");
       });
     });
@@ -271,13 +256,9 @@ function displayPokemon(clone) {
   containerGallery.appendChild(clone);
 }
 
-// generatePokemon();
 searchFormEl.addEventListener("submit", function (event) {
   //debugger
   event.preventDefault();
-
-  //displayMeme();
-
   //Search function that scheck if any name is writen in the
   // searchbar, if not, checks if any generation is selected
   if (textUserInputEl.value !== "") {
@@ -288,7 +269,6 @@ searchFormEl.addEventListener("submit", function (event) {
     if (generationSelectEl.value === "any") {
       if (typeSelectEl.value === "any") {
         //Search all!!!
-        //console.log("Search result: all Pokemon!");
         getAllGenerations();
       } else {
         //Go though all generation by filter by each type
@@ -307,13 +287,14 @@ searchFormEl.addEventListener("submit", function (event) {
   }
 });
 
-// generationSelectEl.addEventListener("click", function (event) {
-//   //debugger
+//PLAN TO REWRITE WINDOW ALERTS TO MODAL ALERTS:
 
-//   event.preventDefault();
-//   //console.log(event.target.value);
+// 1. Ctrl + F, search "alert" within the script.js file. Find the results that show the alert() method (line 254, line 233, and line 218)
 
-//   findGeneration(event.target.value);
-// });
+// 2. Edit alert() and rewrite it as modalAlert() for these three lines.
 
-// closeModalEl.addEventListener("click", closeModal);
+// 3. Go to test browser, it should now display the 404 error modal when clicking on add, remove, and clear from party buttons.
+
+// 4. From here, just need to add divs to html, with id's that correspond to the button names. Declare these as global variables in the script.js as well as the new matching ids on the html.
+
+// 5. Profit??? Pokemon???????
