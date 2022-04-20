@@ -23,7 +23,9 @@ As an aspiring pokémon trainer, I want to build a 6-pokemon party to begin my q
 * WHEN I have finished selecting my party,
 * THEN I am presented with my selected pokémon saved to my local storage.
 ```
-
+## Mock-up
+The following image depcits the style and functionality of the webpage:
+![A user types in the name "Pikachu" and pulls up the results, then adding them to the party.](./assets/images/pokemonpartybuilder.gif)
 ## Credit
 [Erica Breig](https://github.com/EricaBreig), [Jonathan Swann](https://github.com/JS19191898), [Mikhail Sookwah](), [Novia Phan]()
 
